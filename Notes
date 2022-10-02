@@ -1,0 +1,202 @@
+Class 1 - Cucumber
+
+Cucumber - it is a tool that supports BDD
+
+Given - pre condition
+When - to perform actions
+And - supporting tag
+Then - expected result/outcome
+
+
+US - 2345 - Search employee by id
+Given user is able to open chrome browser
+When user enters username and password
+And user clicks on login button
+Then user is navigated to dashboard page
+When user clicks on PIM option
+And user clicks on employee list option
+When user enters id in the employee id field
+And user clicks on search button
+Then user is able to see the employee
+
+-- Cucumbers encourages code reusability concept
+
+main - the code we write to develop the application, we write under main
+
+develop the application
+to test the application
+
+test - the code we write to test the application, we write under test
+
+2 things we have in every project
+
+- coding - java
+- non - java  - properties file, excel etc.
+
+coding will be at one place
+non java will be at another place
+
+
+-- to write gherkin scenarios, we use feature files
+
+
+
+Valid admin login
+Given user is navigated to HRMS application
+When user enters admin username and password
+And clicks on login button
+Then admin user is successfully logged in
+
+scenario - every scenario is considered as one test case
+
+why we don't need system.setproperty() -  "driver/chromedriver.exe"
+if the path is incorrect to webdriver - it will fail, path is limited to one machine
+many time it is not compatible with browser
+
+we use webdrivermanager from now onwards
+
+
+Class 2 -
+
+--  Recap --
+  -- Cucumber - it is a tool that supports BDD
+  -- Gherkin language we use to write BDD
+  -- Feature, Scenario, Given, When, Then, And
+
+What is framework -
+    -- it is an organized structure which allows us to write clean and maintainable code
+
+    Feature file - declare steps in it
+
+POM - page object model is a design pattern in which we create object repository
+
+Class 3 -
+
+-- recap --
+    -- architecture of framework --
+    -- utils - to keep all the utilities of our project such as constants, config reader
+                common methods etc to reuse them.
+
+
+    -- steps - all step definitions can be found under this package for the gherkin
+    steps we used in feature file
+    -- Pages -- POM -- to implement object repository and functions.
+
+    Runner class - we use this class to execute all of our test cases
+
+For pre condition and post condition in cucumber we have 2 annotations
+
+Hooks -
+@Before - this one we use for pre condition
+@After - this one we use for post condition
+
+
+-- hooks should always be mentioned under steps package
+
+
+Background vs hooks
+
+Hooks are applicable to all feature files
+Background is applicable to just one feature file\
+
+Hooks execute first then background executes then scenario executes and in the
+end hooks executes again as post condition
+
+class - 4
+
+    -- recap --
+        -- cucumber options in runner class -
+        dry run - to quickly get the step definitions
+
+    --whenever we write new scenario in feature file, we must set dryrun to true
+    for step definition and then put this definition under steps package, after
+    writing the code in it, again set dryrun to false and execute the script
+
+
+        monochrome - when we set it to true, it removes irrelevant information
+        or unreadable character from console while executing cucumber test cases.
+
+        Hooks -
+        pre condition @Before
+        post condition @After
+
+        we must keep hooks class under steps package
+
+        background - common steps in a feature file until flow is not broken
+
+       it is applicable only to a feature file, every file can have a different background
+
+       tags - to categorize our scenarios for execution
+
+       what is data driver testing
+        when we execute our script against multiple sets of data we call it data
+        driven testing
+
+
+    Class 5 -
+    -- recap --
+        -- What is data driven testing?
+        --
+
+
+    Data table -
+
+    examples table - works for complete scenario
+    Data table - it works only for one step
+
+
+
+Class 6
+ --  recap --
+    Data table -
+    we use data table to achieve data driven testing
+
+    2 types of data table -
+    with headers - list of maps
+    without headers - list
+
+    excel file - spreadsheets
+
+Homework - modify the details of the employee after adding it in the HRMS
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                //we use inlcludes tag to run our runner classes
+                //** means src folder/* means runner package and then file name
+                    <includes>
+                        <include>**/*RunnerClass.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+
+Class - 7
+
+-- recap --
+   --screenshots and reports
+   -- for screenshots in cucumber it accepts array of byte
+   -- we are passing the path of saving screenshots from constants class
+   -- Filename - We are passing the filename from
+   -- we use gettimestamp method to get the time in specific format so that we can add it in the name of screenshot
+
+   -- generating a report that can have a screenshot in it
+   -- we have to add a plugin - in pom.xml
+
+Rerun plugin - we use this plugin in runner class to capture the details of failed
+test cases during execution and then we use failed runner class to execute only failed
+test cases.
+
+
+To run the code from cmd/terminal -
+
+mvn clean = to clean the project
+mvn test = to execute the scripts
+mvn clean verify -Dcucumber.filter.tags="@tagname" to override the tag from cmd
+
+
+
+
