@@ -109,7 +109,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                                  <includes>
-                        <include>**/*RunnerClass.java</include>
+                        <include>**/*SmokeRunner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
