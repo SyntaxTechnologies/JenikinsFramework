@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="JenikinsFramework" />
         <module name="CucumberBatch13" />
         <module name="CucumberBatch13-master" />
       </profile>
