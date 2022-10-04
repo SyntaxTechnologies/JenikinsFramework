@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
         tags = "@smoke",
         //when you use pretty keyword under plugins, it shows all the steps which you
         //executed in console
-        plugin = {"pretty", "html:target/cucumber.html"}
+        plugin = {"pretty",  "json:target/cucumber.json","html:target/cucumber.html"}
 )
 
 public class SmokeRunner {

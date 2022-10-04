@@ -23,7 +23,8 @@ import org.junit.runner.RunWith;
         tags = "@update",
         //when you use pretty keyword under plugins, it shows all the steps which you
         //executed in console
-        plugin = {"pretty"}
+       
+        plugin = {"pretty","json:target/cucumber.json","html:target/cucumber.html"}
 
         //rerun plugin is going to capture all the scenarios which were failed during execution
 )
